@@ -14,6 +14,7 @@ class WorkoutController extends Controller
      */
     public function index()
     {
+    	echo("Test!");
         return view('welcome');
     }
 

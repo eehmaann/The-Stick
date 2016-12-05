@@ -19,7 +19,7 @@ Route::resource('condition', 'ConditionController');
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/workouts', 'WorkoutController@index')
+Route::get('/workouts', 'WorkoutController@index');
 
 Route::get('/debug', function() {
 
