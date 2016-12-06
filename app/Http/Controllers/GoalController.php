@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Carbon;
+use App\Goal; 
 
 class GoalController extends Controller
 {
@@ -13,7 +16,21 @@ class GoalController extends Controller
      */
     public function index()
     {
-        //
+        $goals = Goal::all();
+
+# Make sure we have results before trying to print them...
+if(!$goals->isEmpty()) {
+
+    # Output the books
+    foreach($goals as $goal) {
+        echo $goal->description.'<br>';
+        echo $goal->quantifier.'<br>';
+        echo $goal->starting_point.'<br>';
+    }
+}
+else {
+    echo 'GET SOME GOALS!';
+}//
     }
 
     /**
@@ -23,9 +40,21 @@ class GoalController extends Controller
      */
     public function create()
     {
-        //
-    }
+      /*  $goal = new Goal();
 
+        $goal->type = 'running distance';
+        $goal->description = 'Run a half marathon without stopping';
+        $goal->quantifier = 13;
+        $goal->starting_point = 5;
+        $goal->completed = 'FALSE';
+        $goal->completed_on=> Carbon\Carbon::now()->toDateTimeString(),
+
+        $goal->save();
+
+        echo 'Added: '.$goal->description;//
+        */
+    }
+       
     /**
      * Store a newly created resource in storage.
      *

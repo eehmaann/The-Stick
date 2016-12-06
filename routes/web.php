@@ -11,15 +11,16 @@
 |
 */
 
-
 //Route::resource('workouts', 'WorkoutController');
-Route::resource('goals', 'GoalController');
+//Route::resource('goals', 'GoalController');
 Route::resource('condition', 'ConditionController');
 
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/workouts', 'WorkoutController@index');
+Route:: get('/goals', 'GoalController@index');
+Route:: get('/goals/create', 'GoalContoller@create');
 
 Route::get('/debug', function() {
 

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App;
+use App\Workout;
+use App\Goal;
 
 class WorkoutController extends Controller
 {
@@ -14,7 +15,11 @@ class WorkoutController extends Controller
      */
     public function index()
     {
-    	echo("Test!");
+    	 $workouts = Workout::with('goal')->get();
+        foreach($workouts as $workout) {
+            echo $workout->goal->description.' performed '.$workout->workquantifier.'<br>';
+        }
+        dump($workouts->toArray());
         return view('welcome');
     }
 
