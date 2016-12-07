@@ -30,7 +30,13 @@ class WorkoutController extends Controller
      */
     public function create()
     {
-        //
+         $areas_for_dropdown = Area::getForDropdown();
+         $goals_for_dropdown = Goal::getForDropdown();
+        $conditions_for_checkboxes = Condition::getForCheckboxes();
+        return view('workout.create')->with([
+            'areas_for_dropdown' => $areas_for_dropdown,
+            'goals_for_dropdown'=>$goals_for_dropdown
+        ]);
     }
 
     /**

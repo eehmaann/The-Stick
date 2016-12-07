@@ -15,13 +15,14 @@ class WorkoutConditionTableSeeder extends Seeder
     public function run()
     {
         $workouts =[
-        'running distance' => ['Sore Quads', 'Marathon Recovery'],
-        'running pace' => ['Broken Left Hand','Sharp Pain Back', 'Sore Quads' ],
-        'workout' => ['Feeling Healthy']
+        'miles' => ['Sore Quads', 'Marathon Recovery'],
+        '4 X 400' => ['Broken Left Hand','Sharp Pain Back', 'Sore Quads' ],
+        'backsquat' => ['Feeling Healthy'],
+        '32 inch box jump'=> ['Broken Left Hand', 'Sore Quads']
     ];
-    foreach($workouts as $type => $conditions) {
+    foreach($workouts as $workdescription => $conditions) {
 
-        $workout = Workout::where('type','like',$type)->first();
+        $workout = Workout::where('workdescription','like',$workdescription)->first();
 
         foreach($conditions as $conditionNote) {
             $condition = Condition::where('note','LIKE',$conditionNote)->first();

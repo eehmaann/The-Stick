@@ -13,4 +13,7 @@ class Workout extends Model
 	{
     return $this->belongsToMany('App\Condition')->withTimestamps();
 	}
+	public function area() {
+        return $this->belongsTo('App\Area');
+    }
 }

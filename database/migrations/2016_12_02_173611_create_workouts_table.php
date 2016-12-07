@@ -17,7 +17,6 @@ class CreateWorkoutsTable extends Migration
 
         $table->increments('id');
         $table->timestamps();
-        $table->enum('type', ['running distance', 'running pace', 'workout', ]);
         $table->string('workdescription');      // what was the exercise
         $table->float('workquantifier', 7, 2); // number of miles ran, pace, load etc... 
        

@@ -40,19 +40,12 @@ else {
      */
     public function create()
     {
-      /*  $goal = new Goal();
-
-        $goal->type = 'running distance';
-        $goal->description = 'Run a half marathon without stopping';
-        $goal->quantifier = 13;
-        $goal->starting_point = 5;
-        $goal->completed = 'FALSE';
-        $goal->completed_on=> Carbon\Carbon::now()->toDateTimeString(),
-
-        $goal->save();
-
-        echo 'Added: '.$goal->description;//
-        */
+      {
+        $areas_for_dropdown = Area::getForDropdown();
+        return view('goal.create')->with([
+            'areas_for_dropdown' => $areas_for_dropdown
+        ]);
+    }
     }
        
     /**
@@ -63,7 +56,26 @@ else {
      */
     public function store(Request $request)
     {
-        //
+             # Validate
+        $this->validate($request, [
+            'description' => 'required|min:3',
+            'quantifier' => 'required|min:1|numeric',
+            'starting_point' => 'required|min:1|numeric',
+        ]);
+        #$title = $_POST['title']; # Option 1) Old way, don't do this.
+        $title = $request->input('title'); # Option 2) USE THIS ONE! :)
+        $goal = new Goal();
+        $goal->description = $request->input('description');
+        $goal->quantifier = $request->input('quantifier');
+        $goal->starting_point = $request->input('starting_point');
+        $goal->area_id = $request->area_id;
+        $goal->completed = false;
+        $goal->completed_on = null;
+        //$goal->user_id = $request->user()->id;
+        $goal->save();
+        Session::flash('flash_message', 'You have added a new goal.');
+        return redirect('/goals');
+//
     }
 
     /**
