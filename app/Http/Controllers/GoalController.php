@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Carbon;
-use App\Goal; 
+use App\Goal;
+use App\Area;
+use App\Workout;
+use Session; 
 
 class GoalController extends Controller
 {
@@ -16,21 +19,10 @@ class GoalController extends Controller
      */
     public function index()
     {
-        $goals = Goal::all();
-
-# Make sure we have results before trying to print them...
-if(!$goals->isEmpty()) {
-
-    # Output the books
-    foreach($goals as $goal) {
-        echo $goal->description.'<br>';
-        echo $goal->quantifier.'<br>';
-        echo $goal->starting_point.'<br>';
-    }
-}
-else {
-    echo 'GET SOME GOALS!';
-}//
+        $goals= Goal::with('area')->get();
+         return view('goal.index')->with([
+        'goals' => $goals
+    ]);
     }
 
     /**
@@ -41,7 +33,7 @@ else {
     public function create()
     {
       {
-        $areas_for_dropdown = Area::getForDropdown();
+        $areas_for_dropdown = Area::getAreaDropdown();
         return view('goal.create')->with([
             'areas_for_dropdown' => $areas_for_dropdown
         ]);
@@ -108,17 +100,6 @@ else {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
     {
         //
     }

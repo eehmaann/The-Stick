@@ -19,8 +19,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/workouts', 'WorkoutController@index');
-Route:: get('/goals', 'GoalController@index');
-Route:: get('/goals/create', 'GoalContoller@create');
+Route::get('/workouts/create', 'WorkoutController@create');
+Route::post('/workouts', 'WorkoutController@store');
+Route::get('/workouts/{workdescription}', 'WorkoutController@show');
+Route::get('/workouts/{id}/edit', 'WorkoutController@edit');
+Route::put('/workouts/{id}', 'WorkoutController@update');
+Route::get('/workouts/{id}/delete', 'WorkoutController@delete');
+Route::delete('/workouts/{id}', 'WorkoutController@destroy');
+
+Route::get('/goals', 'GoalController@index');
+Route::get('/goals/create', 'GoalController@create');
+Route::post('/goals', 'GoalController@store');
+
+Route::get('/goals/{description}', 'GoalController@show');
+# Show form to edit a goal
+Route::get('/goals/{id}/edit', 'GoalController@edit');
+# Process form to edit a book
+Route::put('/goals/{id}', 'GoalController@update');
 
 Route::get('/debug', function() {
 
