@@ -54,8 +54,8 @@ class GoalController extends Controller
             'quantifier' => 'required|min:1|numeric',
             'starting_point' => 'required|min:1|numeric',
         ]);
-        #$title = $_POST['title']; # Option 1) Old way, don't do this.
-        $title = $request->input('title'); # Option 2) USE THIS ONE! :)
+        
+        $description = $request->input('description'); 
         $goal = new Goal();
         $goal->description = $request->input('description');
         $goal->quantifier = $request->input('quantifier');
@@ -69,27 +69,23 @@ class GoalController extends Controller
         return redirect('/goals');
 //
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
+     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+        public function edit($id)
     {
-        //
+         $goal = Goal::find($id);
+
+     $areas_for_dropdown = Area::getAreaDropdown();
+
+        return view('goal.edit')->with([
+            'goal'=>$goal,
+            'areas_for_dropdown' => $areas_for_dropdown,
+            ]
+        ); // //
     }
 
     /**
@@ -101,6 +97,43 @@ class GoalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $this->validate($request, [
+            'description' => 'required|min:3',
+            'quantifier' => 'required|min:1|numeric',
+            'starting_point' => 'required|min:1|numeric',
+        ]);
+
+        $goal = Goal::find($request->id);
+        $goal->description=$request->description;
+        $goal->quantifier=$request->quantifier;
+        $goal->starting_point=$request->starting_point;
+        $goal->area_id=$request->area_id;
+        $goal->save();
+
+        Session::flash('flash_message', 'Your changes have been saved.');
+        return redirect ('/goals'); //
+    }
+    public function qapla($id){
+        {
+            $goal = Goal::find($id);
+            $goal->completed=true;
+            return redirect ('/goals');
+        }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+          $goal = Goal::find($id);
+        if(is_null($workout)) {
+            Session::flash('message','This is no Goal here.');
+            return redirect('/workouts');
+        }
+        return view('goal.show')->with([
+            'goal' => $goal,
+        ]);// //
     }
 }

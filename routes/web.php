@@ -32,10 +32,9 @@ Route::get('/goals/create', 'GoalController@create');
 Route::post('/goals', 'GoalController@store');
 
 Route::get('/goals/{description}', 'GoalController@show');
-# Show form to edit a goal
 Route::get('/goals/{id}/edit', 'GoalController@edit');
-# Process form to edit a book
 Route::put('/goals/{id}', 'GoalController@update');
+Route::get('/goals/{id}/qapla', 'GoalController@qapla');
 
 Route::get('/debug', function() {
 
