@@ -15,16 +15,11 @@ class WorkoutController extends Controller
  
     public function index()
     {
-    	 //$workouts = Workout::get();
         $workouts= Workout::with('goal','area')->get();
          return view('workout.index')->with([
         'workouts' => $workouts
     ]);
 }
-       /*  $workouts = Workout::with('goal')->get();
-        foreach($workouts as $workout) {
-            echo $workout->goal->description.' performed '.$workout->workquantifier.'<br>';
-        }*/
 
 
     /**
@@ -54,17 +49,16 @@ class WorkoutController extends Controller
     {
          $this->validate($request, [
             'workdescription' => 'required|min:3',
-            'workquantifier' => 'required|min:0|numeric',
+            'workquantifier' => 'required|min:1|numeric',
         ]);
-        #$title = $_POST['title']; # Option 1) Old way, don't do this.
-        $workdescription = $request->input('workdescription'); # Option 2) USE THIS ONE! :)
+ 
+        $workdescription = $request->input('workdescription');
         $workout = new Workout();
         $workout->workdescription = $request->input('workdescription');
         $workout->workquantifier = $request->input('workquantifier');
         $workout->area_id = $request->area_id;
         $workout->goal_id = $request->goal_id;
         
-        //$goal->user_id = $request->user()->id;
         $workout->save();
 
         $conditions = ($request->conditions) ?: [];

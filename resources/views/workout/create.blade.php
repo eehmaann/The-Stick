@@ -8,7 +8,7 @@
 
     <h1>Add a new Workout</h1>
 
-    <form method='POST' action='/workouts'>
+    <form method='POST' action='/goals'>
 
         {{ csrf_field() }}
 
@@ -34,7 +34,7 @@
         </div>
 
         <div class='form-group'>
-           <label>What activity did you do?</label>
+           <label>workdescription</label>
             <input
                 type='text'
                 id='workdescription'
@@ -53,12 +53,12 @@
                name='workquantifier'
                value='{{ old('workquantifier', '12') }}'
            >
-           <div class='error'>{{ $errors->first('quantifier') }}</div>
+           <div class='error'>{{ $errors->first('workquantifier') }}</div>
         </div>
 
          <div class='form-group'>
             <label>Condition</label>
-            @foreach($conditions_for_checkboxes as $condition_id => $condition_note)
+            @foreach($condition_for_checkboxes as $condition_id => $condition_note)
                 <input type='checkbox' value='{{ $condition_id }}' name='conditions[]'> {{ $condition_note }} <br>
             @endforeach
         </div>
@@ -68,7 +68,7 @@
         </div>
 
 
-        <button type="submit" class="btn btn-primary">Add Workout</button>
+        <button type="submit" class="btn btn-primary">Add Goal</button>
 
         {{--
         <ul class=''>

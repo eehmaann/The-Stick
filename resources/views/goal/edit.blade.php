@@ -21,7 +21,7 @@
             <select name='area_id'>
                 @foreach($areas_for_dropdown as $area_id => $area)
                    <option
-                    {{ ($area_id == $workout->area->id) ? 'SELECTED' : '' }}
+                    {{ ($area_id == $goal->area->id) ? 'SELECTED' : '' }}
                     value='{{ $area_id }}'
                     >{{ $area }}</option>
                 @endforeach
@@ -60,9 +60,6 @@
                value='{{ old('starting_point', $goal->starting_point) }}'
            >
            <div class='error'>{{ $errors->first('starting_point') }}</div>
-        </div>
-
-            @endforeach
         </div>
 
         <div class='form-instructions'>

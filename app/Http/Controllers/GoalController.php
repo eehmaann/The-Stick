@@ -113,12 +113,15 @@ class GoalController extends Controller
         Session::flash('flash_message', 'Your changes have been saved.');
         return redirect ('/goals'); //
     }
+    //Changes an uncomplete goal to a completed goal
     public function qapla($id){
         {
             $goal = Goal::find($id);
             $goal->completed=true;
-            return redirect ('/goals');
+            $goal->save();
+           return redirect ('/goals');
         }
+    }
     /**
      * Display the specified resource.
      *
@@ -128,9 +131,9 @@ class GoalController extends Controller
     public function show($id)
     {
           $goal = Goal::find($id);
-        if(is_null($workout)) {
+        if(is_null($goal)) {
             Session::flash('message','This is no Goal here.');
-            return redirect('/workouts');
+            return redirect('/goals');
         }
         return view('goal.show')->with([
             'goal' => $goal,

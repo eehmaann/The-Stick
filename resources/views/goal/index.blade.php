@@ -29,9 +29,9 @@
                   <td>{{ $goal->description}}
                   <td>{{ $goal->quantifier }}</td>
                   <td>{{ $goal->starting_point}}</td>
-                 <td><a class='button' href='/workouts/{{ $goal->id }}/edit'><i class='fa fa-pencil'></i> Adjust</a></td>
-                 <td><a class='button' href='/workouts/{{ $goal->id }}'><i class='fa fa-eye'></i> Analyze</a></td>
-                 <td><a class='button' href='/workouts/{{ $goal->id }}/qapla'><i class='fa fa-trash'></i> Completed</a></td>
+                 <td><a class='button' href='/goals/{{ $goal->id }}/edit'><i class='fa fa-pencil'></i> Adjust</a></td>
+                 <td><a class='button' href='/goals/{{ $goal->id }}'><i class='fa fa-eye'></i> Analyze</a></td>
+                 <td><a class='button' href='/goals/{{ $goal->id }}/qapla'><i class='fa fa-trash'></i> Completed</a></td>
                 </tr>
                 @endif
             @endforeach
@@ -44,6 +44,7 @@
         		<th> You Want to</th>
         		<th> Measure at</th>
         		<th> You started at</th>
+        		<th> </th>
         		</tr>
          @foreach($goals as $goal)
             @if($goal->completed==true)
@@ -53,6 +54,7 @@
                   <td>{{ $goal->description}}
                   <td>{{ $goal->quantifier }}</td>
                   <td>{{ $goal->starting_point}}</td>
+                  <td><a class='button' href='/workouts/{{ $goal->id }}'><i class='fa fa-eye'></i> Analyze</a></td>
         	</tr>
         </table>
         @endif

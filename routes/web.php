@@ -36,6 +36,12 @@ Route::get('/goals/{id}/edit', 'GoalController@edit');
 Route::put('/goals/{id}', 'GoalController@update');
 Route::get('/goals/{id}/qapla', 'GoalController@qapla');
 
+Route::get('/areas/create', 'AreaController@create');
+Route::post('/areas', 'AreaController@store');
+
+Route::get('/conditions/create', 'ConditionController@create');
+Route::post('/conditions', 'ConditionController@store');
+
 Route::get('/debug', function() {
 
     echo '<pre>';
