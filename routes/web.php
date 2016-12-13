@@ -11,30 +11,26 @@
 |
 */
 
-//Route::resource('workouts', 'WorkoutController');
-//Route::resource('goals', 'GoalController');
-Route::resource('condition', 'ConditionController');
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/workouts', 'WorkoutController@index');
-Route::get('/workouts/create', 'WorkoutController@create');
-Route::post('/workouts', 'WorkoutController@store');
-Route::get('/workouts/{workdescription}', 'WorkoutController@show');
-Route::get('/workouts/{id}/edit', 'WorkoutController@edit');
-Route::put('/workouts/{id}', 'WorkoutController@update');
-Route::get('/workouts/{id}/delete', 'WorkoutController@delete');
-Route::delete('/workouts/{id}', 'WorkoutController@destroy');
+Route::get('/workouts', 'WorkoutController@index')->middleware('auth');
+Route::get('/workouts/create', 'WorkoutController@create')->middleware('auth');
+Route::post('/workouts', 'WorkoutController@store')->middleware('auth');
+Route::get('/workouts/{workdescription}', 'WorkoutController@show')->middleware('auth');
+Route::get('/workouts/{id}/edit', 'WorkoutController@edit')->middleware('auth');
+Route::put('/workouts/{id}', 'WorkoutController@update')->middleware('auth');
+Route::get('/workouts/{id}/delete', 'WorkoutController@delete')->middleware('auth');
+Route::delete('/workouts/{id}', 'WorkoutController@destroy')->middleware('auth');;
 
 Route::get('/goals', 'GoalController@index');
 Route::get('/goals/create', 'GoalController@create');
 Route::post('/goals', 'GoalController@store');
-
-Route::get('/goals/{description}', 'GoalController@show');
-Route::get('/goals/{id}/edit', 'GoalController@edit');
-Route::put('/goals/{id}', 'GoalController@update');
-Route::get('/goals/{id}/qapla', 'GoalController@qapla');
+Route::get('/goals/{description}', 'GoalController@show')->middleware('auth');
+Route::get('/goals/{id}/edit', 'GoalController@edit')->middleware('auth');
+Route::put('/goals/{id}', 'GoalController@update')->middleware('auth');
+Route::get('/goals/{id}/qapla', 'GoalController@qapla')->middleware('auth');
 
 Route::get('/areas/create', 'AreaController@create');
 Route::post('/areas', 'AreaController@store');
@@ -88,3 +84,7 @@ if(App::environment('local')) {
     });
 
 };
+Auth::routes();
+Route::get('/logout','Auth\LoginController@logout')->name('logout');
+
+Route::get('/home', 'HomeController@index');

@@ -8,6 +8,7 @@ use Carbon;
 use App\Goal;
 use App\Area;
 use App\Workout;
+use App\Condition;
 use Session; 
 
 class GoalController extends Controller
@@ -130,7 +131,7 @@ class GoalController extends Controller
      */
     public function show($id)
     {
-          $goal = Goal::find($id);
+            $goal = Goal::find($id);
         if(is_null($goal)) {
             Session::flash('message','This is no Goal here.');
             return redirect('/goals');

@@ -3,7 +3,7 @@
 @section('content')
 
 
-    <h1>Every workout you have recorded</h1>
+    <h1>Every you want to or have wanted to accomplish</h1>
 
     @if(sizeof($goals) == 0)
         You must have some goals of what you want to accomplish. <a href='/workouts/create'>Declare your goals.</a> 
@@ -54,11 +54,11 @@
                   <td>{{ $goal->description}}
                   <td>{{ $goal->quantifier }}</td>
                   <td>{{ $goal->starting_point}}</td>
-                  <td><a class='button' href='/workouts/{{ $goal->id }}'><i class='fa fa-eye'></i> Analyze</a></td>
+                  <td><a class='button' href='/goals/{{ $goal->id }}'><i class='fa fa-eye'></i> Analyze</a></td>
         	</tr>
-        </table>
         @endif
         @endforeach
+        </table>
     @endif
 
 @endsection

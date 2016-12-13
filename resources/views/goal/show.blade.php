@@ -2,7 +2,6 @@
 @section('content') 
                <p>  You are trying to {{$goal->description}} at {{$goal->quantifier}}.</p>
                <p> In pursuing this goal you have done</p>
-                @foreach($goal->workouts as $workout)
  <table>
         	<tr>
         		<th> On </th>
@@ -10,14 +9,13 @@
         		<th> At </th>
         		<th> Focused on</th>
         	</tr>
-            @foreach($workouts as $workout)
+            @foreach($goal->workouts as $workout)
             	<tr>
-                  <td>{{ $workout->created_at }}</td>
-                  <td>{{ $workout->workdescription }}</td>
-                  <td>{{ $workout->workquantifier }}</td>
-                  <td>{{ $workout->area->purpose}}</td>
+                  <td>{{ $goal->workout->created_at }}</td>
+                  <td>{{ $goal->workout->workdescription }}</td>
+                  <td>{{ $goal->workout->workquantifier }}</td>
+                  <td>{{ $goal->workout->area->purpose}}</td>
                 </tr>
-            @endforeach
             </table>
                         @endforeach
                 <p>  Keep up your good work.  You will achieve your goals.  </p>
