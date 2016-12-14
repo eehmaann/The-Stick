@@ -22,6 +22,7 @@ class GoalssTableSeeder extends Seeder
         'starting_point' => 10,
        'completed'=>True,
        'completed_on'=> Carbon\Carbon::now()->toDateTimeString(),
+       'user_id' => 1,
     ]);
 	$area_id = Area::where('purpose','=','running pace')->pluck('id')->first();
      DB::table('goals')->insert([
@@ -33,6 +34,7 @@ class GoalssTableSeeder extends Seeder
         'starting_point' => 11,
        'completed'=>False,
        'completed_on'=> null,
+       'user_id' => 1,
     ]);
 	$area_id = Area::where('purpose','=','lift')->pluck('id')->first();
    DB::table('goals')->insert([
@@ -44,6 +46,7 @@ class GoalssTableSeeder extends Seeder
         'starting_point' => 190,
        'completed'=>False,
        'completed_on'=> null,
+       'user_id' => 1,
     ]);//
     }
 }

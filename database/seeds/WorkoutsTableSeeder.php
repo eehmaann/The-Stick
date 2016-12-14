@@ -21,6 +21,7 @@ class WorkoutsTableSeeder extends Seeder
         'workdescription' => 'miles',
         'workquantifier' => 12,
          'goal_id' => $goal_id,
+         'user_id' => 1,
         ]);
        
         $area_id = Area::where('purpose','=','running pace')->pluck('id')->first();
@@ -32,6 +33,7 @@ class WorkoutsTableSeeder extends Seeder
         'workquantifier' => 10.5,  
         'workdescription' => '4 X 400',
         'goal_id' => $goal_id,
+        'user_id' => 1,
         ]);
        
     	$area_id = Area::where('purpose','=','lift')->pluck('id')->first();
@@ -43,6 +45,7 @@ class WorkoutsTableSeeder extends Seeder
         'workdescription' => 'backsquat',
         'workquantifier' => 200,
         'goal_id' => $goal_id,
+        'user_id' => 1,
         ]);
         
         $area_id = Area::where('purpose','=','lift')->pluck('id')->first();
@@ -54,6 +57,7 @@ class WorkoutsTableSeeder extends Seeder
         'workdescription' => '32 inch box jump',
         'workquantifier' => 180,
         'goal_id' => $goal_id,
+        'user_id' => 1,
         ]);
     }
 }

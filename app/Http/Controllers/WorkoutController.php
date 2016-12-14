@@ -13,7 +13,7 @@ use Session;
 class WorkoutController extends Controller
 {
  
-    public function index()
+    public function index(Request $request)
     {
         $workouts= Workout::with('goal','area')->get();
          return view('workout.index')->with([
@@ -58,6 +58,7 @@ class WorkoutController extends Controller
         $workout->workquantifier = $request->input('workquantifier');
         $workout->area_id = $request->area_id;
         $workout->goal_id = $request->goal_id;
+        $workout->user_id = $request->user()->id;
         
         $workout->save();
 

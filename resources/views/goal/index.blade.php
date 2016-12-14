@@ -3,14 +3,14 @@
 @section('content')
 
 
-    <h1>Every you want to or have wanted to accomplish</h1>
+    <h1>Everything you want to or have wanted to accomplish</h1>
 
     @if(sizeof($goals) == 0)
-        You must have some goals of what you want to accomplish. <a href='/workouts/create'>Declare your goals.</a> 
+        You must have some goals of what you want to accomplish. <a href='/goals/create'>Declare your goals.</a> 
     @else
     <a href='/goals/create'>Add another goal.</a>
-        <div id='goals' class='uncomplete'>
-        <table>
+        <div id='goals' class='dream'>
+        <table class='table'>
         	<tr>
         		<th> Started on </th>
             <th> Improving type of performance</th>
@@ -37,7 +37,7 @@
             @endforeach
             </table>
         </div>
-        <table class="complete">
+        <table class="table complete">
         	<tr>
         		<th> Started on </th>
             	<th> Improving type of performance</th>

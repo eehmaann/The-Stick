@@ -51,6 +51,7 @@ class GoalController extends Controller
     {
              # Validate
         $this->validate($request, [
+            'area_id' =>'required',
             'description' => 'required|min:3',
             'quantifier' => 'required|min:1|numeric',
             'starting_point' => 'required|min:1|numeric',

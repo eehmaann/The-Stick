@@ -58,7 +58,7 @@
 
          <div class='form-group'>
             <label>Condition</label>
-            @foreach($condition_for_checkboxes as $condition_id => $condition_note)
+            @foreach($conditions_for_checkboxes as $condition_id => $condition_note)
                 <input type='checkbox' value='{{ $condition_id }}' name='conditions[]'> {{ $condition_note }} <br>
             @endforeach
         </div>

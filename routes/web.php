@@ -24,9 +24,9 @@ Route::put('/workouts/{id}', 'WorkoutController@update')->middleware('auth');
 Route::get('/workouts/{id}/delete', 'WorkoutController@delete')->middleware('auth');
 Route::delete('/workouts/{id}', 'WorkoutController@destroy')->middleware('auth');;
 
-Route::get('/goals', 'GoalController@index');
-Route::get('/goals/create', 'GoalController@create');
-Route::post('/goals', 'GoalController@store');
+Route::get('/goals', 'GoalController@index')->middleware('auth');;
+Route::get('/goals/create', 'GoalController@create')->middleware('auth');;
+Route::post('/goals', 'GoalController@store')->middleware('auth');
 Route::get('/goals/{description}', 'GoalController@show')->middleware('auth');
 Route::get('/goals/{id}/edit', 'GoalController@edit')->middleware('auth');
 Route::put('/goals/{id}', 'GoalController@update')->middleware('auth');

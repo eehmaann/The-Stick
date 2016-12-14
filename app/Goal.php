@@ -21,4 +21,7 @@ class Goal extends Model
         }
         return $goals_for_dropdown;
     }
+    public function user() {
+    return $this->belongsTo('App\User');
+}
 }

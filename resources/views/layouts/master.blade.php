@@ -5,8 +5,8 @@
 		@yield('title','The Stick')
 	</title>
 <head>
-<link href="/css/app.css" type='text/css' rel='stylesheet'>
 <link href='/css/thestick.css' type='text/css' rel='stylesheet'>
+<link href="/css/app.css" type='text/css' rel='stylesheet'>
 </head>
 
 	<body>
