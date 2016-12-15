@@ -20,7 +20,7 @@
         </div>
 
         <div class='form-group'>
-           <label>description</label>
+           <label>Description of what you want to accomplish</label>
             <input
                 type='text'
                 id='description'
@@ -32,7 +32,7 @@
 
 
         <div class='form-group'>
-           <label>Number based goal</label>
+           <label>Define success in a number (e.g. miles, pace, weight)</label>
            <input
                type='text'
                id='quantifier'
@@ -43,7 +43,7 @@
         </div>
 
         <div class='form-group'>
-           <label>Starting number</label>
+           <label>What is your starting point in numbrers</label>
            <input
                type='text'
                id='starting_point'
@@ -75,5 +75,44 @@
 
     </form>
 
+<h2>Don't have the category type you want? Add another.</h2>
+
+    <form method='POST' action='/areas'>
+
+        {{ csrf_field() }}
+
+	<p>  What is the new category option that you would like to add for your goals and workouts?</p>
+        <div class='form-group'>
+           <label>description</label>
+            <input
+                type='text'
+                id='purpose'
+                name='purpose'
+                value='{{ old('description', 'Other') }}'
+            >
+           <div class='error'>{{ $errors->first('purpose') }}</div>
+
+		</div>
+        <div class='form-instructions'>
+            You can't submit a blank answer.
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Goal Category</button>
+
+        {{--
+        <ul class=''>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        --}}
+
+        <div class='error'>
+            @if(count($errors) > 0)
+                Please correct the errors above and try again.
+            @endif
+        </div>
+
+    </form>
 
 @stop

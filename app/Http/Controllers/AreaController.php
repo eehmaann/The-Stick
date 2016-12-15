@@ -34,7 +34,7 @@ class AreaController extends Controller
         $area->purpose = $request->input('purpose');
         $area->save();
         Session::flash('flash_message', 'You have added a new set.  Would you like to build another?');
-        return redirect('/areas/create');
+        return redirect('/goals/create');
 //
     }  //
 }

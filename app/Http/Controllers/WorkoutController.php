@@ -7,6 +7,7 @@ use App\Workout;
 use App\Goal;
 use App\Area;
 use App\Condition;
+use App\User;
 use Session;
 
 
@@ -16,21 +17,32 @@ class WorkoutController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
+        if($user) {
         $workouts= Workout::where('user_id', '=', $user->id)->with('goal','area')->get();
+        }
+        else{
+            $workouts=[];
+        }
          return view('workout.index')->with([
-        'workouts' => $workouts
-    ]);
-}
-
+            'workouts' => $workouts
+        ]);
+    }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-
+        $user = $request->user();
+        if($user){
+            $goals=Goal::where('user_id', '=', $user->id)->get();
+        }
+        if(count($goals)==0){
+           Session::flash('flash_message', 'You must have at least one goal before you can create workouts.');       
+        return redirect('/goals/create');
+        }
          $areas_for_dropdown = Area::getAreaDropdown();
          $goals_for_dropdown = Goal::getForDropdown();
         $conditions_for_checkboxes = Condition::getForCheckboxes();
