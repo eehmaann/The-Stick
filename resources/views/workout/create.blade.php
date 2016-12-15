@@ -8,7 +8,7 @@
 
     <h1>Add a new Workout</h1>
 
-    <form method='POST' action='/goals'>
+    <form method='POST' action='/workouts'>
 
         {{ csrf_field() }}
 
@@ -34,7 +34,7 @@
         </div>
 
         <div class='form-group'>
-           <label>workdescription</label>
+           <label>What activity did you do?</label>
             <input
                 type='text'
                 id='workdescription'
@@ -46,7 +46,7 @@
 
 
         <div class='form-group'>
-           <label>Number based description</label>
+           <label>Number based description of what you did.  (e.g. pace, reps, weight)</label>
            <input
                type='text'
                id='workquantifier'
@@ -64,11 +64,11 @@
         </div>
 
         <div class='form-instructions'>
-            All fields are required
+            All fields are required except for conditions
         </div>
 
 
-        <button type="submit" class="btn btn-primary">Add Goal</button>
+        <button type="submit" class="btn btn-primary">Add Workout</button>
 
         {{--
         <ul class=''>

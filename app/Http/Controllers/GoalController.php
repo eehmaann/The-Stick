@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use Carbon;
+use Carbon\Carbon;
 use App\Goal;
 use App\Area;
 use App\Workout;
@@ -18,9 +18,10 @@ class GoalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $goals= Goal::with('area')->get();
+        $user = $request->user();
+        $goals= Goal::where('user_id', '=', $user->id)->with('area')->get();
          return view('goal.index')->with([
         'goals' => $goals
     ]);
@@ -65,6 +66,7 @@ class GoalController extends Controller
         $goal->area_id = $request->area_id;
         $goal->completed = false;
         $goal->completed_on = null;
+        $goal->user_id = $request->user()->id;
         //$goal->user_id = $request->user()->id;
         $goal->save();
         Session::flash('flash_message', 'You have added a new goal.');
@@ -120,6 +122,7 @@ class GoalController extends Controller
         {
             $goal = Goal::find($id);
             $goal->completed=true;
+            $goal->completed_on=Carbon::now();
             $goal->save();
            return redirect ('/goals');
         }

@@ -37,13 +37,14 @@
             @endforeach
             </table>
         </div>
-        <table class="table complete">
+        <table class="table completed">
         	<tr>
         		<th> Started on </th>
             	<th> Improving type of performance</th>
         		<th> You Want to</th>
         		<th> Measure at</th>
         		<th> You started at</th>
+        		<th> You completed it on</th>
         		<th> </th>
         		</tr>
          @foreach($goals as $goal)
@@ -51,9 +52,10 @@
     		<tr>
                   <td>{{ $goal->created_at }}</td>
                   <td>{{ $goal->area->purpose}}</td>
-                  <td>{{ $goal->description}}
-                  <td>{{ $goal->quantifier }}</td>
+                  <td style='color:red;text-decoration:line-through'>{{ $goal->description}}
+                  <td style='color:red;text-decoration:line-through'>{{ $goal->quantifier }}</td>
                   <td>{{ $goal->starting_point}}</td>
+                  <td>{{ $goal->completed_on}}</td>
                   <td><a class='button' href='/goals/{{ $goal->id }}'><i class='fa fa-eye'></i> Analyze</a></td>
         	</tr>
         @endif

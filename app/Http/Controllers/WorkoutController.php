@@ -15,7 +15,8 @@ class WorkoutController extends Controller
  
     public function index(Request $request)
     {
-        $workouts= Workout::with('goal','area')->get();
+        $user = $request->user();
+        $workouts= Workout::where('user_id', '=', $user->id)->with('goal','area')->get();
          return view('workout.index')->with([
         'workouts' => $workouts
     ]);
@@ -29,6 +30,7 @@ class WorkoutController extends Controller
      */
     public function create()
     {
+
          $areas_for_dropdown = Area::getAreaDropdown();
          $goals_for_dropdown = Goal::getForDropdown();
         $conditions_for_checkboxes = Condition::getForCheckboxes();
@@ -47,7 +49,8 @@ class WorkoutController extends Controller
      */
     public function store(Request $request)
     {
-         $this->validate($request, [
+        $this->validate($request, [
+            'goal_id'=>'required',
             'workdescription' => 'required|min:3',
             'workquantifier' => 'required|min:1|numeric',
         ]);
@@ -59,7 +62,6 @@ class WorkoutController extends Controller
         $workout->area_id = $request->area_id;
         $workout->goal_id = $request->goal_id;
         $workout->user_id = $request->user()->id;
-        
         $workout->save();
 
         $conditions = ($request->conditions) ?: [];

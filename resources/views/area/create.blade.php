@@ -24,7 +24,7 @@
             You can't submit a blank answer.
         </div>
 
-        <button type="submit" class="btn btn-primary">Add Goal</button>
+        <button type="submit" class="btn btn-primary">Add Goal Area</button>
 
         {{--
         <ul class=''>

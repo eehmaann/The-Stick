@@ -7,6 +7,7 @@
 @section('content')
 
     <h1>Edit {{ $goal->all }} </h1>
+    <h2> Are you really ready to end this goal, and replace it with another one? </h2>
 
     <form method='POST' action='/goals/{{ $goal->id }}'>
 

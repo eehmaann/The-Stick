@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @section('content') 
-               <p>  You are trying to {{$goal->description}} at {{$goal->quantifier}}.</p>
+               <h2>  You are trying to {{$goal->description}} at {{$goal->quantifier}}.</h2>
                <p> In pursuing this goal you have done</p>
- <table>
+ <table class="table">
         	<tr>
         		<th> On </th>
         		<th> You did</th>
@@ -21,8 +21,8 @@
 
                 <p>  Keep up your good work.  You will achieve your goals.  </p>
                  
-<a class='button' href='/goals/{{ $goal->id }}/edit'><i class='fa fa-pencil'></i> Adjust the goal</a>
-<a class='button' href='/goals/{{ $goal->id }}/qapla'><i class='fa fa-trash'></i> Mark complete</a>
+<a class='button' href='/goals/{{ $goal->id }}/edit'><i'></i> Adjust the goal</a>
+<a class='button' href='/goals/{{ $goal->id }}/qapla'><i></i> Mark complete</a>
 
     <br><br>
     <a class='return' href='/goals'>&larr; See all goals</a>

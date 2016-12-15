@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use Carbon;
+use Carbon\Carbon;
 use App\Area;
+use Session;
 
 class AreaController extends Controller
 {
@@ -33,7 +34,7 @@ class AreaController extends Controller
         $area->purpose = $request->input('purpose');
         $area->save();
         Session::flash('flash_message', 'You have added a new set.  Would you like to build another?');
-        return redirect('/area/create');
+        return redirect('/areas/create');
 //
     }  //
 }
