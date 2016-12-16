@@ -2,8 +2,10 @@
 
 @section('content')
 
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
     <h1>Add a new Goal</h1>
-
     <form method='POST' action='/goals'>
 
         {{ csrf_field() }}
@@ -74,7 +76,8 @@
         </div>
 
     </form>
-
+	</div>
+	<div class="col-md-4">
 <h2>Don't have the category type you want? Add another.</h2>
 
     <form method='POST' action='/areas'>
@@ -83,7 +86,7 @@
 
 	<p>  What is the new category option that you would like to add for your goals and workouts?</p>
         <div class='form-group'>
-           <label>description</label>
+           <label>Name Category</label>
             <input
                 type='text'
                 id='purpose'
@@ -112,7 +115,9 @@
                 Please correct the errors above and try again.
             @endif
         </div>
-
     </form>
+    </div>
+</div>
+</div>
 
 @stop

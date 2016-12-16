@@ -6,7 +6,9 @@
     <h1>Everything you want to or have wanted to accomplish</h1>
 
     @if(sizeof($goals) == 0)
-        You must have some goals of what you want to accomplish. <a href='/goals/create'>Declare your goals.</a> 
+    	<p>The first step is writing down your goals
+    	What would you like to accomplish?<p>
+    	<p class="lead"><a href='/goals/create'>Declare your goals!</a> </p>
     @else
     <div class="container">
     	<h2> Current goals:</h2>
@@ -30,9 +32,9 @@
                   <td>{{ $goal->description}}
                   <td>{{ $goal->quantifier }}</td>
                   <td>{{ $goal->starting_point}}</td>
-                 <td><a class='	btn btn-warning' href='/goals/{{ $goal->id }}/edit'><i></i> Adjust</a></td>
-                 <td><a class='btn btn-info' href='/goals/{{ $goal->id }}'><i></i> Analyze</a></td>
-                 <td><a class='btn btn-success' href='/goals/{{ $goal->id }}/qapla'><i></i> Completed</a></td>
+                 <td><a class='	btn btn-warning' href='/goals/{{ $goal->id }}/edit'> Adjust</a></td>
+                 <td><a class='btn btn-info' href='/goals/{{ $goal->id }}'> Analyze</a></td>
+                 <td><a class='btn btn-success' href='/goals/{{ $goal->id }}/qapla'> Mark Completed</a></td>
                 </tr>
                 @endif
             @endforeach
@@ -59,7 +61,7 @@
                   <td class="complete">{{ $goal->quantifier }}</td>
                   <td class="complete">{{ $goal->starting_point}}</td>
                   <td>{{ $goal->completed_on}}</td>
-                  <td><a class='btn btn-info' href='/goals/{{ $goal->id }}'><i></i> Analyze</a></td>
+                  <td><a class='btn btn-info' href='/goals/{{ $goal->id }}'> Analyze</a></td>
         	</tr>
         @endif
         @endforeach

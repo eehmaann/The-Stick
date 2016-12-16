@@ -121,7 +121,10 @@ class WorkoutController extends Controller
         $workout = Workout::find($id);
 
      $areas_for_dropdown = Area::getAreaDropdown();
-    $goals_for_dropdown = Goal::getForDropdown();
+      // Get user from auth
+         $id = Auth::user()->id;
+         // User Model to retrieve correct list for dropdown
+         $goals_for_dropdown = Goal::getForDropdown($id);
     $conditions_for_checkboxes = Condition::getForCheckboxes();
 
         $conditions_for_this_workout = [];

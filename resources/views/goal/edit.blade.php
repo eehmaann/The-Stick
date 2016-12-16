@@ -5,9 +5,9 @@
 @stop
 
 @section('content')
-
-    <h1>Edit {{ $goal->all }} </h1>
-    <h2> Are you really ready to end this goal, and replace it with another one? </h2>
+<div class="container">
+    <h1>Edit {{ $goal->description }}</h1>
+    <h2>Are you sure you don't want to stay with this goal?</h2>
 
     <form method='POST' action='/goals/{{ $goal->id }}'>
 
@@ -76,6 +76,6 @@
         </div>
 
     </form>
-
+</div>
 
 @stop

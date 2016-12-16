@@ -5,8 +5,8 @@
 @stop
 
 @section('content')
-
-    <h1>Edit {{ $workout->all }} </h1>
+<div class="container">
+    <h1>Edit {{ $workout->workdescription }} </h1>
 
     <form method='POST' action='/workouts/{{ $workout->id }}'>
 
@@ -40,7 +40,7 @@
         </div>
 
         <div class='form-group'>
-           <label>workdescription</label>
+           <label>Describe the workout</label>
             <input
                 type='text'
                 id='workdescription'
@@ -52,7 +52,7 @@
 
 
         <div class='form-group'>
-           <label>Number based description</label>
+           <label>Number that you did (reps, miles pace)</label>
            <input
                type='text'
                id='workquantifier'
@@ -89,6 +89,6 @@
         </div>
 
     </form>
-
+</div>
 
 @stop

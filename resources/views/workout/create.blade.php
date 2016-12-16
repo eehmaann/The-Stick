@@ -5,7 +5,9 @@
 @stop
 
 @section('content')
-
+<div class="container">
+	<div class="row">
+	<div class="col-sm-8">
     <h1>Add a new Workout</h1>
 
     <form method='POST' action='/workouts'>
@@ -85,13 +87,15 @@
         </div>
 
     </form>
+    </div> <!--end larger grid section-->
+     <div class="col-sm-4">
  <h2>Is there another condition?</h2>
 
     <form method='POST' action='/conditions'>
 
         {{ csrf_field() }}
 
-	<p> What other else might be effecting your workouts?</p>
+	<p> What else might be effecting your workouts?</p>
         <div class='form-group'>
            <label>Description</label>
             <input
@@ -124,6 +128,7 @@
         </div>
 
     </form>
-
-
+	</div>	<!--end grid section-->
+	</div> <!--end row-->
+</div>  <!-- end container-->
 @stop
