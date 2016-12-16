@@ -9,6 +9,7 @@ nav ul li {
     background-color:#eee;
     padding:5px;
     margin-right:5px;
+    font-size:.8em;
 }
 
 .dream{
@@ -16,4 +17,15 @@ nav ul li {
 	color:#282c9b;
 	font-size:1.5em;
 	font-family: cBrush Script Std, Brush Script MT, cursive;
+}
+
+
+
+
+.complete{
+	text-decoration: line-through;
+	font-size: 1.2em;
+}
+.completed{
+	border: thin black solid;
 }

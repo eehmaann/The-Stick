@@ -9,6 +9,7 @@ use App\Area;
 use App\Condition;
 use App\User;
 use Session;
+use Auth;
 
 
 class WorkoutController extends Controller
@@ -35,16 +36,23 @@ class WorkoutController extends Controller
      */
     public function create(Request $request)
     {
+        // get the list of goals the user has.
         $user = $request->user();
         if($user){
             $goals=Goal::where('user_id', '=', $user->id)->get();
         }
+        // redirect to goals create if the user has no goals, so form can be completed.
         if(count($goals)==0){
            Session::flash('flash_message', 'You must have at least one goal before you can create workouts.');       
         return redirect('/goals/create');
         }
          $areas_for_dropdown = Area::getAreaDropdown();
-         $goals_for_dropdown = Goal::getForDropdown();
+
+         // Get user from auth
+         $id = Auth::user()->id;
+         $currentuser = User::find($id);
+         // User Model to retrieve correct list for dropdown
+         $goals_for_dropdown = Goal::getForDropdown($id);
         $conditions_for_checkboxes = Condition::getForCheckboxes();
         return view('workout.create')->with([
             'areas_for_dropdown' => $areas_for_dropdown,

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Request;
+use App\Auth;
 
 class Goal extends Model
 {
@@ -14,8 +15,9 @@ class Goal extends Model
         return $this->hasMany('App\Workout');
     } 
     
-     public static function getForDropdown() {
-        $goals = Goal::orderBy('description', 'ASC')->get();
+     public static function getForDropdown($currentuser) {
+    	
+        $goals = Goal::where('user_id', $currentuser)->orderBy('description', 'ASC')->get();
         $goals_for_dropdown = [];
         foreach($goals as $goal) {
             $goals_for_dropdown[$goal->id] = $goal->description.' '.$goal->quantifier;
