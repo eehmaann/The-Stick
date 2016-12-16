@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
 @section('content')
-
-    <h1>Add a new Set</h1>
+<div class="container">
+    <h1>Add a new category of goals</h1>
 
     <form method='POST' action='/areas'>
 
         {{ csrf_field() }}
 
-	<p>  What is the new category option that you would like to add for your goals and workouts?</p>
+	<p>  What is the new category You would like to add?</p>
         <div class='form-group'>
-           <label>description</label>
+           <label>Category Name</label>
             <input
                 type='text'
                 id='purpose'
@@ -41,6 +41,6 @@
         </div>
 
     </form>
-
+</div>
 
 @stop

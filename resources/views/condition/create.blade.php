@@ -2,15 +2,16 @@
 
 @section('content')
 
+<div class="container">
     <h1>Add a new Condition</h1>
 
     <form method='POST' action='/conditions'>
 
         {{ csrf_field() }}
 
-	<p> What other else might be effecting your workouts?</p>
+	<p> What else might be effecting your workouts?</p>
         <div class='form-group'>
-           <label>description</label>
+           <label>Description</label>
             <input
                 type='text'
                 id='note'
@@ -41,6 +42,6 @@
         </div>
 
     </form>
-
+</div>
 
 @stop
