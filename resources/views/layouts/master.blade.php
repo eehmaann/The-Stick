@@ -1,10 +1,11 @@
 <!doctype html>
 <html>
+<head>
 	<meta charset="utf-8">
 	<title>
 		@yield('title','The Stick')
 	</title>
-<head>
+
 <link href='/css/thestick.css' type='text/css' rel='stylesheet'>
 <link href="/css/app.css" type='text/css' rel='stylesheet'>
 </head>
