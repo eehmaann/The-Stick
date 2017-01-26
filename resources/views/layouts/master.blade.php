@@ -11,7 +11,7 @@
 
 	<body>
 	<header>
-	<h1> The Speedy Turtle's Indexes of Calculated Kickassery</p>
+	<h1> The Speedy Turtle's Indexes of Calculated Kickassery</h1>
 	<nav>
     <ul>
         @if(Auth::check())
